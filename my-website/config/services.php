@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'wp_api' => [
+        'url' => env('WP_API_BASE_URL'),
+        'client_id' => env('WP_API_CLIENT_ID'),
+        'client_secret' => env('WP_API_CLIENT_SECRET'),
+    ],
+
 ];

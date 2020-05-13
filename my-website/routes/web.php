@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * We create a dedicated WordPress authentication controller to get access tokens
+ */
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('get-token', 'WP\AuthController@getToken');
+    Route::get('process-token', 'WP\AuthController@processToken');
 });
