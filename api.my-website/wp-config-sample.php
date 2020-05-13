@@ -58,6 +58,11 @@ define( 'DB_CHARSET', 'utf8' );
  */
 define('DB_COLLATE', '');
 
+/**
+ * Der Name der Laravel Website
+ */
+define('WP_LARAVEL_URL', 'https://domainname.com');
+
 /**#@+
  * Sicherheitsschlüssel
  *
