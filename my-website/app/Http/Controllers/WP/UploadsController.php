@@ -15,7 +15,9 @@ class UploadsController extends Controller
     public function showWpImage($year, $month, $filename)
     {
         $slug = '/wp-content/uploads/'.$year.'/'.$month.'/'.$filename;
-        $imageUrl = config('services.wp_api.url').$slug;
+
+        // TODO: Replace http://, e.g. try getting contents without protocol
+        $imageUrl = 'http://'.config('services.wp_api.url').$slug;
 
         $args = $this->setFileGetContentsArgs();
         $file = file_get_contents($imageUrl, false, stream_context_create($args));
@@ -50,11 +52,11 @@ class UploadsController extends Controller
                 "ssl"=> [
                     "verify_peer"      => false,
                     "verify_peer_name" => false
-            ],
+                ],
                 "http"=> [
                     'timeout'    => 60,
                     'user_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/3.0.0.1'
-            ]
-        ];
+                ]
+            ];
     }
 }

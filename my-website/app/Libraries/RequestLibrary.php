@@ -8,7 +8,7 @@ class RequestLibrary
 {
     public function __construct()
     {
-        // $this->token = DB::table('WpAuth')->first()->access_token;
+        $this->token = config('services.wp_api.client_secret');
         $this->token = '';
         $this->client = new Client();
         $this->params = [
@@ -34,16 +34,21 @@ class RequestLibrary
                    'headers' => $response->getHeaders()
                 ];
 
-                if ($type == 'posts') {
-                    return (new BlogLibrary)->reformatBlogList($data);
-                } elseif ($type == 'page') {
-                    return (new PageLibrary)->reformatPage($data);
-                }
-
-                return $data;
+                $this->reformatContent($type, $data);
             } catch (\Exception $e) {
                 abort(500, $e->getMessage());
             }
         });
+    }
+
+    public function reformatContent($type, $data)
+    {
+        if ($type == 'posts') {
+            return (new BlogLibrary)->reformatBlogList($data);
+        } elseif ($type == 'page') {
+            return (new PageLibrary)->reformatPage($data);
+        }
+
+        return $data;
     }
 }
