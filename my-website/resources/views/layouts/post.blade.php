@@ -13,5 +13,11 @@
     <body>
         <h1>{{ $post->title }}</h1>
         {!! $post->content !!}
+
+        <div id="comments" data-post-id="{{ $post->id }}"></div>
+
+        <!-- Scripts -->
+		@stack('scripts')
+		<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
     </body>
 </html>

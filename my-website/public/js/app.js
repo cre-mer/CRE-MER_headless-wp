@@ -65802,10 +65802,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/example-component/index.js":
-/*!************************************************************!*\
-  !*** ./resources/js/components/example-component/index.js ***!
-  \************************************************************/
+/***/ "./resources/js/components/comment-form/index.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/comment-form/index.js ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65816,8 +65816,192 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _fbo_react_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../fbo-react-component */ "./resources/js/components/fbo-react-component/index.js");
-/* harmony import */ var _methods__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./methods */ "./resources/js/components/example-component/methods.js");
-/* harmony import */ var _props__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./props */ "./resources/js/components/example-component/props.js");
+/* harmony import */ var _methods__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./methods */ "./resources/js/components/comment-form/methods.js");
+/* harmony import */ var _props__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./props */ "./resources/js/components/comment-form/props.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+ // Import internal dependencies
+
+
+
+
+
+var CommentForm = /*#__PURE__*/function (_FboReactComponent) {
+  _inherits(CommentForm, _FboReactComponent);
+
+  var _super = _createSuper(CommentForm);
+
+  function CommentForm(props) {
+    var _this;
+
+    _classCallCheck(this, CommentForm);
+
+    _this = _super.call(this, props);
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(CommentForm, [{
+    key: "render",
+    value: function render() {
+      var postId = this.props.postId;
+
+      _objectDestructuringEmpty(this.state);
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "hidden",
+        id: "postId",
+        value: postId
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "name"
+      }, "Name*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "name",
+        type: "text",
+        required: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "email"
+      }, "Email*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "email",
+        type: "email",
+        required: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "comment"
+      }, "Comment*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
+        id: "comment",
+        required: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "submit",
+        value: "Post comment!"
+      }));
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+
+      var _e$target$elements = _slicedToArray(e.target.elements, 4),
+          postId = _e$target$elements[0],
+          name = _e$target$elements[1],
+          email = _e$target$elements[2],
+          comment = _e$target$elements[3];
+
+      var data = JSON.stringify({
+        post: postId.value,
+        author_name: name.value,
+        author_email: email.value,
+        content: comment.value
+      });
+      var ACTION_URL = "https://api.my-website.test/wp-json/wp/v2/comments";
+      fetch(ACTION_URL, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: data
+      }).then(function (response) {
+        if (response.ok === true) {
+          alert('Submitted successfully!');
+        }
+
+        return response.json();
+      }).then(function (object) {// Comment submission failed.
+        // Output `object.message` to see the error message.
+      })["catch"](function (error) {
+        return console.error('Error:', error);
+      });
+    }
+  }]);
+
+  return CommentForm;
+}(_fbo_react_component__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (CommentForm);
+
+/***/ }),
+
+/***/ "./resources/js/components/comment-form/methods.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/comment-form/methods.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var methods = {};
+/* harmony default export */ __webpack_exports__["default"] = (methods);
+
+/***/ }),
+
+/***/ "./resources/js/components/comment-form/props.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/comment-form/props.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var props = [];
+/* harmony default export */ __webpack_exports__["default"] = (props);
+
+/***/ }),
+
+/***/ "./resources/js/components/comments/index.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/comments/index.js ***!
+  \***************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fbo_react_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../fbo-react-component */ "./resources/js/components/fbo-react-component/index.js");
+/* harmony import */ var _comment_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../comment-form */ "./resources/js/components/comment-form/index.js");
+/* harmony import */ var _methods__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./methods */ "./resources/js/components/comments/methods.js");
+/* harmony import */ var _props__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./props */ "./resources/js/components/comments/props.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
@@ -65849,43 +66033,52 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var ExampleComponent = /*#__PURE__*/function (_FboReactComponent) {
-  _inherits(ExampleComponent, _FboReactComponent);
 
-  var _super = _createSuper(ExampleComponent);
+var Comments = /*#__PURE__*/function (_FboReactComponent) {
+  _inherits(Comments, _FboReactComponent);
 
-  function ExampleComponent(props) {
+  var _super = _createSuper(Comments);
+
+  function Comments(props) {
     var _this;
 
-    _classCallCheck(this, ExampleComponent);
+    _classCallCheck(this, Comments);
 
     _this = _super.call(this, props);
     _this.state = {};
     return _this;
   }
 
-  _createClass(ExampleComponent, [{
+  _createClass(Comments, [{
     key: "render",
     value: function render() {
-      _objectDestructuringEmpty(this.props);
+      var postId = this.props.postId;
 
       _objectDestructuringEmpty(this.state);
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, "Example component");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_comment_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        postId: postId
+      });
     }
   }]);
 
-  return ExampleComponent;
-}(_fbo_react_component__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  return Comments;
+}(_fbo_react_component__WEBPACK_IMPORTED_MODULE_2__["default"]); // Render component
 
-/* harmony default export */ __webpack_exports__["default"] = (ExampleComponent);
+
+window.addEventListener("load", function () {
+  // Fully loaded!
+  var comments = document.getElementById('comments'); // Comments form
+
+  react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Comments, comments.dataset), comments);
+});
 
 /***/ }),
 
-/***/ "./resources/js/components/example-component/methods.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/example-component/methods.js ***!
-  \**************************************************************/
+/***/ "./resources/js/components/comments/methods.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/comments/methods.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65896,10 +66089,10 @@ var methods = {};
 
 /***/ }),
 
-/***/ "./resources/js/components/example-component/props.js":
-/*!************************************************************!*\
-  !*** ./resources/js/components/example-component/props.js ***!
-  \************************************************************/
+/***/ "./resources/js/components/comments/props.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/comments/props.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65980,17 +66173,22 @@ var FboReactComponent = /*#__PURE__*/function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _example_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./example-component */ "./resources/js/components/example-component/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _comments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments */ "./resources/js/components/comments/index.js");
+/**
+ * Import React dependencies
+ */
+
+
 /**
 * Import components
 */
- // Render component
+// import './example-component';
 
-window.addEventListener("load", function () {
-  // Fully loaded!
-  var example = document.getElementById('example-id');
-  example !== null && example !== void 0 ? example : ReactDOM.render( /*#__PURE__*/React.createElement(ExampleComponent, map.dataset), map);
-});
+
 
 /***/ }),
 
