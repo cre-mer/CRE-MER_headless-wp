@@ -16,7 +16,7 @@ class RequestLibrary
                 'Authorization' => 'Bearer '.$this->token,
                 'Accept' => 'application/json'
             ],
-            'verify' => env('APP_ENV') == 'local' ? false : true // set to true to check for ssl
+            'verify' => env('APP_ENV') == 'production' ? true : false // set to true to check for ssl
         ];
     }
 

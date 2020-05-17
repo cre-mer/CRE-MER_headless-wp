@@ -32,9 +32,15 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::get('/p/{slug}', function ($slug) {
+Route::get('/{slug}', function ($slug) {
     $requestLibrary = new RequestLibrary();
     $post = $requestLibrary->getData($slug, 'posts')['data'][0]; // [0] because we're using custom permalinks example post slug
 
     return view('post', ['post' => $post]);
 });
+
+
+/*
+ * Show Image
+ */
+Route::get('/wp-content/uploads/{year}/{month}/{filename}', 'WP\UploadsController@showWpImage');

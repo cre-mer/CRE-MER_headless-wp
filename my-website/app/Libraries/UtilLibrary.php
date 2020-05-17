@@ -12,6 +12,10 @@ class UtilLibrary
     */
     public function reformatContent($content)
     {
-        return str_replace(config('services.wp_api.url'), '', $content);
+        $search = [
+            'https://' . config('services.wp_api.url'),
+            'http://' . config('services.wp_api.url')
+        ];
+        return str_replace($search, '', $content);
     }
 }
