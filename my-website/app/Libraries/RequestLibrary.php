@@ -8,7 +8,7 @@ class RequestLibrary
 {
     public function __construct()
     {
-        $this->token = config('services.wp_api.client_secret');
+        // $this->token = config('services.wp_api.client_secret');
         $this->token = '';
         $this->client = new Client();
         $this->params = [
@@ -29,12 +29,13 @@ class RequestLibrary
             try {
                 $response = $this->client->request('GET', $url, $this->params);
                 $body = $response->getBody()->getContents();
+
                 $data = [
                    'body' => json_decode($body, true),
                    'headers' => $response->getHeaders()
                 ];
 
-                $this->reformatContent($type, $data);
+                return $this->reformatContent($type, $data);
             } catch (\Exception $e) {
                 abort(500, $e->getMessage());
             }

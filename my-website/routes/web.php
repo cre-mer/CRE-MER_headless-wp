@@ -36,7 +36,7 @@ Route::get('/{slug}', function ($slug) {
     $requestLibrary = new RequestLibrary();
     $post = $requestLibrary->getData($slug, 'posts')['data'][0]; // [0] because we're using custom permalinks example post slug
 
-    return view('post', ['post' => $post]);
+    return view('layouts.post', ['post' => $post]);
 });
 
 
