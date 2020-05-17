@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Libraries\RequestLibrary;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('get-token', 'WP\AuthController@getToken');
     Route::get('process-token', 'WP\AuthController@processToken');
+});
+
+
+Route::get('/p/{slug}', function ($slug) {
+    $requestLibrary = new RequestLibrary();
+    $post = $requestLibrary->getData($slug, 'posts')['data'][0]; // [0] because we're using custom permalinks example post slug
+
+    return view('post', ['post' => $post]);
 });
