@@ -8,4 +8,4 @@ import React from 'react';
 * Import components
 */
 // import './example-component';
-import './comments';
+import './comments-section';

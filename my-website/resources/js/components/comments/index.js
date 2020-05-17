@@ -3,7 +3,6 @@ import React from 'react';
 
 // Import internal dependencies
 import FboReactComponent from '../fbo-react-component';
-import CommentForm from '../comment-form';
 import methods from './methods';
 import props from './props';
 
@@ -16,20 +15,16 @@ class Comments extends FboReactComponent {
     }
 
     render() {
-        const { postId } = this.props;
+        const {} = this.props;
         const {} = this.state;
 
         return (
-            <CommentForm postId={postId} />
+            <ul className="comments">
+                <li></li>
+            </ul>
         )
     }
 
 }
 
-// Render component
-window.addEventListener("load", () => {
-    // Fully loaded!
-	const comments = document.getElementById('comments');
-    // Comments form
-	ReactDOM.render(<Comments {...comments.dataset} />, comments);
-});
+export default Comments;

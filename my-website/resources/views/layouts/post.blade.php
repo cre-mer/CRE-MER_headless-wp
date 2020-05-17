@@ -14,7 +14,7 @@
         <h1>{{ $post->title }}</h1>
         {!! $post->content !!}
 
-        <div id="comments" data-post-id="{{ $post->id }}"></div>
+        <div id="comments-section" data-post-id="{{ $post->id }}"></div>
 
         <!-- Scripts -->
 		@stack('scripts')

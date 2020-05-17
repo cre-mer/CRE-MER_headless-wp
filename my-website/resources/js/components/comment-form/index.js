@@ -21,7 +21,7 @@ class CommentForm extends FboReactComponent {
         const {} = this.state;
 
         return (
-            <form onSubmit={ this.handleSubmit }>
+            <form onSubmit={ this.handleSubmit } className="comments-form">
               <input type="hidden" id="postId" value={postId} />
               <div>
                 <label htmlFor="name">Name*</label>
