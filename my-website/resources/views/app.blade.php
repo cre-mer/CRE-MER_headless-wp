@@ -6,6 +6,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ env('APP_NAME') }} - @yield('title')</title>
+        <meta name="og:title" content="{{ $post['seo_title'] ?? '' }}">
+        <meta name="description" content="{{ $post['meta_description'] ?? '' }}">
 
         {{-- Scripts --}}
         @stack('styles')
@@ -23,6 +25,7 @@
         @include('nav.admin-nav', ['post' => (array) $post])
 
         <!-- Scripts -->
+        <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
         @stack('scripts')
     </body>
 </html>
