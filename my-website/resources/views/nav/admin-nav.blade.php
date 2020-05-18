@@ -17,3 +17,5 @@
         </ul>
     </nav>
 </div>
+
+<link rel="stylesheet" href="{{ URL::asset('css/admin-nav.css') }}">

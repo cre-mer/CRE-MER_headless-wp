@@ -9,10 +9,6 @@
 
         {{-- Scripts --}}
         @stack('styles')
-        @php
-            // TODO: Add @wpauth
-        @endphp
-        <link rel="stylesheet" href="{{ URL::asset('css/admin-nav.css') }}">
     </head>
     <body>
 
