@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/**
+/*
  * We create a dedicated WordPress authentication controller to get access tokens
  */
 Route::group(['middleware' => 'auth'], function () {
@@ -32,6 +32,24 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+/*
+ * WP Admin
+ */
+Route::get('/wp-admin/{any?}', function () {
+    $url = 'http://' . env('WP_API_BASE_URL');
+    $url .= $_SERVER['REQUEST_URI'];
+
+    return Redirect::to($url);
+})->where('any', '.*');
+
+/*
+ * Show Image
+ */
+Route::get('/wp-content/uploads/{year}/{month}/{filename}', 'WP\UploadsController@showWpImage');
+
+/*
+ * Show post based on slug
+ */
 Route::get('/{slug}', function ($slug) {
     $requestLibrary = new RequestLibrary();
     $post = $requestLibrary->getPost($slug) ?? abort(404);
@@ -43,9 +61,3 @@ Route::get('/{slug}', function ($slug) {
         return view('layouts.page', ['post' => $post[1][0]]); // [0] because we're using custom permalinks example post slug
     }
 });
-
-
-/*
- * Show Image
- */
-Route::get('/wp-content/uploads/{year}/{month}/{filename}', 'WP\UploadsController@showWpImage');
