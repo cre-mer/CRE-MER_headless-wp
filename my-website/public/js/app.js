@@ -66292,7 +66292,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _comments_section__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comments-section */ "./resources/js/components/comments-section/index.js");
+/* harmony import */ var _comments_section__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments-section */ "./resources/js/components/comments-section/index.js");
 /**
  * Import React dependencies
  */
@@ -66325,8 +66325,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jonas/sites/CRE-MER_headless-wp/my-website/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jonas/sites/CRE-MER_headless-wp/my-website/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jonasmerhej/sites/CRE-MER/CRE-MER_headless-wp/my-website/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jonasmerhej/sites/CRE-MER/CRE-MER_headless-wp/my-website/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
