@@ -43,18 +43,15 @@
             height: 100%;
         }
 
-        &_dashboard, li {
+        li {
+            height: 100%;
+            margin-left: 10px;
             padding-left: 3px;
             padding-right: 3px;
 
             &:hover {
                 background-color: var(--dark);
             }
-        }
-
-        li {
-            height: 100%;
-            margin-left: 10px;
         }
     }
 
@@ -63,7 +60,8 @@
         text-decoration: none;
     }
 
-    p, ul {
+    p,
+    ul {
         height: 100%;
         margin-bottom: 0;
         margin-top: 0;
