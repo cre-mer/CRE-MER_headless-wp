@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
  * WP Admin
  */
 Route::get('/wp-admin/{any?}', function () {
-    $url = 'http://' . env('WP_API_BASE_URL');
+    $url = env('WP_API_BASE_URL');
     $url .= $_SERVER['REQUEST_URI'];
 
     return Redirect::to($url);

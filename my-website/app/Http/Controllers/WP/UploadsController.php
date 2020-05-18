@@ -16,8 +16,7 @@ class UploadsController extends Controller
     {
         $slug = '/wp-content/uploads/'.$year.'/'.$month.'/'.$filename;
 
-        // TODO: Replace http://, e.g. try getting contents without protocol
-        $imageUrl = 'http://'.config('services.wp_api.url').$slug;
+        $imageUrl = config('services.wp_api.url').$slug;
 
         $args = $this->setFileGetContentsArgs();
         $file = file_get_contents($imageUrl, false, stream_context_create($args));
