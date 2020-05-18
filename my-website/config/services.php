@@ -31,6 +31,7 @@ return [
     ],
 
     'wp_api' => [
+        'short_url' => env('WP_API_BASE_SHORT_URL'),
         'url' => env('WP_API_BASE_URL'),
         'client_id' => env('WP_API_CLIENT_ID'),
         'client_secret' => env('WP_API_CLIENT_SECRET'),
