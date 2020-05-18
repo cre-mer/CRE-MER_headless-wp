@@ -34,9 +34,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/{slug}', function ($slug) {
     $requestLibrary = new RequestLibrary();
-    $post = $requestLibrary->getData($slug, 'posts')['data'][0] ?? abort(404); // [0] because we're using custom permalinks example post slug
+    $post = $requestLibrary->getPost($slug) ?? abort(404);
 
-    return view('layouts.post', ['post' => $post]);
+
+    if ($post[0] == 'posts') {
+        return view('layouts.post', ['post' => $post[1][0]]); // [0] because we're using custom permalinks example post slug
+    } elseif ($post[0] == 'pages') {
+        return view('layouts.page', ['post' => $post[1][0]]); // [0] because we're using custom permalinks example post slug
+    }
 });
 
 

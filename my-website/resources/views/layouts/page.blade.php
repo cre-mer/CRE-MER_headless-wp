@@ -8,13 +8,8 @@
 
     </head>
     <body>
-        <h1>{{ $post->title }}</h1>
-        {!! $post->content !!}
+        <h1>{{ $post['title']['rendered'] }}</h1>
+        {!! $post['content']['rendered'] !!}
 
-        <div id="comments-section" data-post-id="{{ $post->id }}"></div>
-
-        <!-- Scripts -->
-		@stack('scripts')
-		<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
     </body>
 </html>

@@ -52,4 +52,25 @@ class RequestLibrary
 
         return $data;
     }
+
+    /**
+     * Get wp post
+     * @param  string $slug post slug
+     * @return object|null
+     */
+    public function getPost($slug) {
+        if ($this->getData($slug, 'posts')['data']) {
+            return [
+                'posts',
+                $this->getData($slug, 'posts')['data']
+            ];
+        } elseif (! empty($this->getData($slug, 'pages')['body'])) {
+            return [
+                'pages',
+                $this->getData($slug, 'pages')['body']
+            ];
+        }
+
+        return null;
+    }
 }
