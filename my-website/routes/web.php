@@ -24,6 +24,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*
+ * Clear cache and compiled views
+ */
+ Route::get('clear-cache', 'DevClearCacheController@clear_cache')->name('clear-cache');
+ Route::get('clear-views', 'DevClearCacheController@clear_views')->name('clear-views');
+
+/*
  * We create a dedicated WordPress authentication controller to get access tokens
  */
 Route::group(['middleware' => 'auth'], function () {
@@ -40,7 +46,7 @@ Route::get('/wp-admin/{any?}', function () {
     $url .= $_SERVER['REQUEST_URI'];
 
     return Redirect::to($url);
-})->where('any', '.*');
+})->where('any', '.*')->name('wp-admin');
 
 /*
  * Show Image

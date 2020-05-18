@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Stored in resources/views/layouts/page.blade.php -->
 
-        <title>Laravel</title>
+@extends('app')
 
-    </head>
-    <body>
-        <h1>{{ $post['title']['rendered'] }}</h1>
-        {!! $post['content']['rendered'] !!}
+@section('title', $post['title']['rendered'])
 
-    </body>
-</html>
+@section('content')
+    <h1>{{ $post['title']['rendered'] }}</h1>
+    {!! $post['content']['rendered'] !!}
+@endsection

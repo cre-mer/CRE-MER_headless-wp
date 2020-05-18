@@ -34,6 +34,9 @@ class CommentsSection extends FboReactComponent {
 window.addEventListener("load", () => {
     // Fully loaded!
 	const comments = document.getElementById('comments-section');
-    // CommentsSection form
-	ReactDOM.render(<CommentsSection {...comments.dataset} />, comments);
+
+    if (comments !== null) {
+        // CommentsSection form
+        ReactDOM.render(<CommentsSection {...comments.dataset} />, comments);
+    }
 });

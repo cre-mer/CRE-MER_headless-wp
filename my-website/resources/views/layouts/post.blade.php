@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Stored in resources/views/layouts/page.blade.php -->
 
-        <title>Laravel</title>
+@extends('app')
 
-    </head>
-    <body>
-        <h1>{{ $post->title }}</h1>
-        {!! $post->content !!}
+@section('title', $post->title)
 
-        <div id="comments-section" data-post-id="{{ $post->id }}"></div>
+@section('content')
+    <h1>{{ $post->title }}</h1>
+    {!! $post->content !!}
 
-        <!-- Scripts -->
-		@stack('scripts')
-		<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
-    </body>
-</html>
+    <div id="comments-section"></div>
+@endsection
+
+@push('scripts')
+<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+@endpush
