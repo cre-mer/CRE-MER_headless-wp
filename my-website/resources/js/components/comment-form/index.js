@@ -68,15 +68,16 @@ class CommentForm extends FboReactComponent {
         body: data,
       })
         .then((response) => {
-          if (response.ok === true) {
-            alert('Submitted successfully!');
-          }
+            if (response.ok === true) {
+              alert('Submitted successfully!');
+            }
 
-          return response.json();
+            return response.json();
         })
         .then((object) => {
-          // Comment submission failed.
-          // Output `object.message` to see the error message.
+            // Comment submission failed.
+            // Output `object.message` to see the error message.
+            if (object.message !== undefined) alert(object.message);
         })
         .catch(error => console.error('Error:', error));
     }

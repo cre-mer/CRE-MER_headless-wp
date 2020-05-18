@@ -65943,8 +65943,10 @@ var CommentForm = /*#__PURE__*/function (_FboReactComponent) {
         }
 
         return response.json();
-      }).then(function (object) {// Comment submission failed.
+      }).then(function (object) {
+        // Comment submission failed.
         // Output `object.message` to see the error message.
+        if (object.message !== undefined) alert(object.message);
       })["catch"](function (error) {
         return console.error('Error:', error);
       });
