@@ -39,7 +39,7 @@ If your website has the url my-website.test and your WP Api has the url api.my-w
 APP_SHORT_URL=my-website.test
 APP_URL=https://${APP_SHORT_URL}
 
-WP_API_BASE_URL=https://api.${APP_SHORT_URL}
+WP_API_BASE_URL=api.${APP_SHORT_URL}
 ```
 Run `php artisan key:generate`
 
