@@ -21,7 +21,11 @@ CRE-MER_headless-wp/
 ## Usage
 ### Setup WP as usual
 1. Do the 5 minutes setup as usual.
-2. When you're done, log in to the backend and go to Settings -> Permalinks. Select the radio button "Post name" and save your changes.
+2. In your wp-config.php edit this line
+```php
+define('WP_LARAVEL_URL', 'http://my-website.test');
+```
+3. When you're done, log in to the backend and go to Settings -> Permalinks. Select the radio button "Post name" and save your changes.
 
 ### Setup Laravel
 ```bash
