@@ -25,10 +25,6 @@
         @include('nav.admin-nav', ['post' => (array) ($post ?? '')])
 
         <!-- Scripts -->
-        <script type="text/javascript">
-            const CSRF = "{{ csrf_token() }}";
-            const ACTION_URL = env('WP_API_BASE_URL') . "/wp-json/wp/v2/comments";
-        </script>
         <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
         @stack('scripts')
     </body>

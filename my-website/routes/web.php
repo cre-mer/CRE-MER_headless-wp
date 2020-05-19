@@ -60,7 +60,6 @@ Route::get('/{slug}', function ($slug) {
     $requestLibrary = new RequestLibrary();
     $post = $requestLibrary->getPost($slug) ?? abort(404);
 
-
     if ($post[0] == 'posts') {
         return view('layouts.post', ['post' => (array) $post[1][0]]); // [0] because we're using custom permalinks example post slug
     } elseif ($post[0] == 'pages') {

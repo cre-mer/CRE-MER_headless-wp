@@ -30,8 +30,6 @@ class Comments extends FboReactComponent {
 	render() {
 		const {comments, page, per_page, show_less_comments, total_comments} = this.state;
 
-		console.log(total_comments , per_page);
-
 		return (
 			<div className="comments_wrapper">
 				<ol className="comments">

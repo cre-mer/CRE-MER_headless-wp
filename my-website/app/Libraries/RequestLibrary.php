@@ -8,8 +8,7 @@ class RequestLibrary
 {
     public function __construct()
     {
-        // $this->token = config('services.wp_api.client_secret');
-        $this->token = '';
+        $this->token = config('services.wp_api.client_secret') ?? '';
         $this->client = new Client();
         $this->params = [
             'headers' => [
@@ -46,7 +45,7 @@ class RequestLibrary
     {
         if ($type == 'posts') {
             return (new BlogLibrary)->reformatBlogList($data);
-        } elseif ($type == 'page') {
+        } elseif ($type == 'pages') {
             return (new PageLibrary)->reformatPage($data);
         }
 
@@ -58,16 +57,17 @@ class RequestLibrary
      * @param  string $slug post slug
      * @return object|null
      */
-    public function getPost($slug) {
+    public function getPost($slug)
+    {
         if ($this->getData($slug, 'posts')['data']) {
             return [
                 'posts',
                 $this->getData($slug, 'posts')['data']
             ];
-        } elseif (! empty($this->getData($slug, 'pages')['body'])) {
+        } elseif (! empty($this->getData($slug, 'pages')['data'])) {
             return [
                 'pages',
-                $this->getData($slug, 'pages')['body']
+                $this->getData($slug, 'pages')['data']
             ];
         }
 

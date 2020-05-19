@@ -3,14 +3,14 @@
 use Jenssegers\Date\Date;
 use stdClass;
 
-class BlogLibrary
+class PageLibrary
 {
     /**
     * Reformat the content of an array of blog posts
     * @param  array $rawBlogs
     * @return array
     */
-    public function reformatBlogList($rawBlogs)
+    public function reformatPage($rawBlogs)
     {
         $blogs = [];
 
@@ -56,11 +56,13 @@ class BlogLibrary
         $categories = [];
         $tags = [];
 
-        foreach ($rawBlog['_links']['wp:term'] as $item) {
-            if ($item['taxonomy'] == 'category') {
-                $categories[] = $item;
-            } elseif ($item['taxonomy'] == 'post_tag') {
-                $tags[] = $item;
+        if (array_key_exists('wp:term', $rawBlog['_links'])) {
+            foreach ($rawBlog['_links']['wp:term'] as $item) {
+                if ($item['taxonomy'] == 'category') {
+                    $categories[] = $item;
+                } elseif ($item['taxonomy'] == 'post_tag') {
+                    $tags[] = $item;
+                }
             }
         }
 
