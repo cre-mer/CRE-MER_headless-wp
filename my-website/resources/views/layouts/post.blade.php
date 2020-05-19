@@ -2,13 +2,13 @@
 
 @extends('app')
 
-@section('title', $post['title'] ?? '')
+@section('title', $post->title ?? '')
 
 @section('content')
-    <h1>{{ $post['title'] ?? '' }}</h1>
-    {!! $post['content'] ?? '' !!}
+    <h1>{{ $post->title ?? '' }}</h1>
+    {!! $post->content ?? '' !!}
 
-    <div id="comments-section" data-post-id="{{$post['id'] ?? ''}}"></div>
+    <div id="comments-section" data-post-id="{{$post->id ?? ''}}"></div>
 @endsection
 
 @push('scripts')

@@ -2,9 +2,9 @@
 
 @extends('app')
 
-@section('title', $post['title'] ?? '')
+@section('title', $post->title ?? '')
 
 @section('content')
-    <h1>{{ $post['title'] ?? '' }}</h1>
-    {!! $post['content'] ?? '' !!}
+    <h1>{{ $post->title ?? '' }}</h1>
+    {!! $post->content ?? '' !!}
 @endsection
