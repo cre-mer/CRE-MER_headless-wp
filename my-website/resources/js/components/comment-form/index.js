@@ -3,8 +3,6 @@ import React from 'react';
 
 // Import internal dependencies
 import FboReactComponent from '../fbo-react-component';
-import methods from './methods';
-import props from './props';
 
 class CommentForm extends FboReactComponent {
 
@@ -18,48 +16,41 @@ class CommentForm extends FboReactComponent {
 
     render() {
         const { postId } = this.props;
-        const {} = this.state;
 
         return (
-            <form onSubmit={ this.handleSubmit } className="comments-form">
-              <input type="hidden" id="postId" value={postId} />
-              <div>
-                <label htmlFor="name">Name*</label>
-                <input id="name" type="text" required />
-              </div>
-              <div>
-                <label htmlFor="email">Email*</label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="comment">Comment*</label>
-                <textarea
-                  id="comment"
-                  required
-                />
-              </div>
-              <input type="submit" value="Post comment!" />
-            </form>
+			<form onSubmit={ this.handleSubmit } className="comments-form">
+				<input type="hidden" id="csrd_token" name="_token" value={CSRF} />
+				<input type="hidden" id="postId" value={postId} />
+				<div>
+					<label htmlFor="name">Name*</label>
+					<input id="name" name="name" type="text" required />
+				</div>
+				<div>
+					<label htmlFor="email">Email*</label>
+					<input id="email" name="email" type="email" required />
+				</div>
+				<div>
+					<label htmlFor="comment">Comment*</label>
+					<textarea id="comment" name="comment" required />
+				</div>
+				<input type="submit" value="Post comment!" />
+			</form>
         )
     }
 
     handleSubmit(e) {
       e.preventDefault();
 
-      const [postId, name, email, comment] = e.target.elements;
+      const [csrd_token, postId, name, email, comment] = e.target.elements;
 
       const data = JSON.stringify({
+		csrf_token: csrd_token.value,
         post: postId.value,
         author_name: name.value,
         author_email: email.value,
         content: comment.value,
       });
 
-      const ACTION_URL = "https://api.my-website.test/wp-json/wp/v2/comments"
       fetch(ACTION_URL, {
         method: 'post',
         headers: {

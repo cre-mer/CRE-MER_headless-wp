@@ -5,8 +5,6 @@ import React from 'react';
 import FboReactComponent from '../fbo-react-component';
 import CommentForm from '../comment-form';
 import Comments from '../comments';
-import methods from './methods';
-import props from './props';
 
 class CommentsSection extends FboReactComponent {
 

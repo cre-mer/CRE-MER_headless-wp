@@ -25,6 +25,10 @@
         @include('nav.admin-nav', ['post' => (array) $post])
 
         <!-- Scripts -->
+        <script type="text/javascript">
+            const CSRF = "{{ csrf_token() }}";
+            const ACTION_URL = "https://api.my-website.test/wp-json/wp/v2/comments";
+        </script>
         <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
         @stack('scripts')
     </body>
