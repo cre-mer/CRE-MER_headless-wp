@@ -2,7 +2,7 @@
 
 @extends('app')
 
-@section('title', $post['title'] ?? '')
+@section('title', $post['title'] ?? null)
 
 <!-- Styles -->
 @push('styles')
