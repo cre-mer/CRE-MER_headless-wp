@@ -33,25 +33,27 @@ class Comments extends FboReactComponent {
 		console.log(total_comments , per_page);
 
 		return (
-			<ol className="comments">
-				{ comments.length == 0 ? 'There are no comments yet.' :
-					comments.map((comment, key) => {
-						return (
-							<li key={key}>
-								<article>
-									<address>{comment.author_name}</address>
-									<div dangerouslySetInnerHTML={this.dangerousHTML(comment.content.rendered)}></div>
-								</article>
-							</li>
-						)
-					})
-				}
+			<div className="comments_wrapper">
+				<ol className="comments">
+					{ comments.length == 0 ? 'There are no comments yet.' :
+						comments.map((comment, key) => {
+							return (
+								<li key={key}>
+									<article>
+										<address>{comment.author_name}</address>
+										<div dangerouslySetInnerHTML={this.dangerousHTML(comment.content.rendered)}></div>
+									</article>
+								</li>
+							)
+						})
+					}
+				</ol>
 				{ total_comments <= per_page && !show_less_comments ? '' : total_comments <= per_page ?
-					<a href="#" onClick={() => {this.setState({total_comments: total_comments + per_page}); this.showLessComments()}}>Show less comments</a>
+					<button onClick={() => {this.setState({total_comments: total_comments + per_page}); this.showLessComments()}}>Show less comments</button>
 					:
-					<a href="#" onClick={() => {this.setState({total_comments: total_comments - per_page}); this.getComments()}}>Show older comments</a>
+					<button onClick={() => {this.setState({total_comments: total_comments - per_page}); this.getComments()}}>Show older comments</button>
 				}
-			</ol>
+			</div>
 		)
 	}
 
