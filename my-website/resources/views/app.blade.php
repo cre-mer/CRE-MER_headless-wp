@@ -22,7 +22,7 @@
         @php
             // TODO: Add @wpauth
         @endphp
-        @include('nav.admin-nav', ['post' => (array) $post])
+        @include('nav.admin-nav', ['post' => (array) ($post ?? '')])
 
         <!-- Scripts -->
         <script type="text/javascript">
