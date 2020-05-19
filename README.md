@@ -15,7 +15,7 @@ CRE-MER_headless-wp/
 
 ├── api.my-website/ (your wp directory)
 
-├── my-website/ (your laravel directory)
+L── my-website/ (your laravel directory)
 
 
 ## Usage
@@ -25,7 +25,8 @@ CRE-MER_headless-wp/
 ```php
 define('WP_LARAVEL_URL', 'http://my-website.test');
 ```
-3. When you're done, log in to the backend and go to Settings -> Permalinks. Select the radio button "Post name" and save your changes.
+3. Activate the blank theme
+4. When you're done, log in to the backend and go to Settings -> Permalinks. Select the radio button "Post name" and save your changes.
 
 ### Setup Laravel
 ```bash
