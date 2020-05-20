@@ -20,10 +20,19 @@ class CommentForm extends FboReactComponent {
         const { postId } = this.props;
         const { message } = this.state;
 
+        const afterSubmit = (
+                <>
+                    <p dangerouslySetInnerHTML={this.dangerousHTML(message)}></p>
+                    <button onClick={() => { this.setState({ message: undefined }) }}>
+                        Add another comment
+                    </button>
+                </>
+        );
+
         return (
             <div>
 
-                { message ? <p dangerouslySetInnerHTML={this.dangerousHTML(message)}></p> :
+                { message ? afterSubmit :
 
         			<form onSubmit={ this.handleSubmit } className="comments-form">
         				<input type="hidden" id="csrd_token" name="_token" value={CSRF} />
@@ -44,7 +53,7 @@ class CommentForm extends FboReactComponent {
         			</form>
 
                 }
-                
+
             </div>
         )
     }
