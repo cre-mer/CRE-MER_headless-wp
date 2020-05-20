@@ -22,7 +22,7 @@ class CommentForm extends FboReactComponent {
 
         return (
             <div>
-                { !message ? '' : <p>{message}</p> }
+                { !message ? '' : <p dangerouslySetInnerHTML={this.dangerousHTML(message)}></p> }
     			<form onSubmit={ this.handleSubmit } className="comments-form">
     				<input type="hidden" id="csrd_token" name="_token" value={CSRF} />
     				<input type="hidden" id="postId" value={postId} />
