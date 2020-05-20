@@ -22,24 +22,29 @@ class CommentForm extends FboReactComponent {
 
         return (
             <div>
-                { !message ? '' : <p dangerouslySetInnerHTML={this.dangerousHTML(message)}></p> }
-    			<form onSubmit={ this.handleSubmit } className="comments-form">
-    				<input type="hidden" id="csrd_token" name="_token" value={CSRF} />
-    				<input type="hidden" id="postId" value={postId} />
-    				<div>
-    					<label htmlFor="name">Name*</label>
-    					<input id="name" name="name" type="text" required />
-    				</div>
-    				<div>
-    					<label htmlFor="email">Email*</label>
-    					<input id="email" name="email" type="email" required />
-    				</div>
-    				<div>
-    					<label htmlFor="comment">Comment*</label>
-    					<textarea id="comment" name="comment" required />
-    				</div>
-    				<input type="submit" value="Post comment!" />
-    			</form>
+
+                { message ? <p dangerouslySetInnerHTML={this.dangerousHTML(message)}></p> :
+
+        			<form onSubmit={ this.handleSubmit } className="comments-form">
+        				<input type="hidden" id="csrd_token" name="_token" value={CSRF} />
+        				<input type="hidden" id="postId" value={postId} />
+        				<div>
+        					<label htmlFor="name">Name*</label>
+        					<input id="name" name="name" type="text" required />
+        				</div>
+        				<div>
+        					<label htmlFor="email">Email*</label>
+        					<input id="email" name="email" type="email" required />
+        				</div>
+        				<div>
+        					<label htmlFor="comment">Comment*</label>
+        					<textarea id="comment" name="comment" required />
+        				</div>
+        				<input type="submit" value="Post comment!" />
+        			</form>
+
+                }
+                
             </div>
         )
     }
