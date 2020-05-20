@@ -1,0 +1,10 @@
+{
+	"name": "core/post-date",
+	"category": "layout",
+	"attributes": {
+		"format": {
+			"type": "string"
+		}
+	},
+	"context": [ "postId" ]
+}
