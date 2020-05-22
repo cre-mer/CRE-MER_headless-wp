@@ -24,6 +24,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*
+ * Locale
+ */
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['de'])) {
+        App::setLocale($locale);
+        return view('welcome');
+    }
+    return;
+
+})->where('any', '.*');
+
+/*
  * Clear cache and compiled views
  */
  Route::get('clear-cache', 'DevClearCacheController@clear_cache')->name('clear-cache');
@@ -52,6 +64,16 @@ Route::get('/wp-admin/{any?}', function () {
  * Show Image
  */
 Route::get('/wp-content/uploads/{year}/{month}/{filename}', 'WP\UploadsController@showWpImage');
+
+/*
+ * Show post archive
+ */
+Route::get('/posts/{type?}', function ($type = '') {
+    $requestLibrary = new RequestLibrary();
+    $posts = $requestLibrary->getPosts($type) ?? abort(404);
+
+    return view('layouts.posts', ['posts' => $posts['data']]);
+});
 
 /*
  * Show post based on slug

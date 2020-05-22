@@ -47,6 +47,11 @@ class RequestLibrary
             return (new BlogLibrary)->reformatBlogList($data);
         } elseif ($type == 'pages') {
             return (new PageLibrary)->reformatPage($data);
+        } elseif ($type == 'post_archive') {
+            return (new PostArchiveLibrary)->reformatContent($data);
+        }
+         elseif ($type == 'author') {
+            return (new AuthorLibrary)->reformatContent($data);
         }
 
         return $data;
@@ -72,5 +77,54 @@ class RequestLibrary
         }
 
         return null;
+    }
+
+    /**
+     * Get wp posts
+     * @param string $type post type
+     * @return object|null
+     */
+    public function getPosts($type)
+    {
+        $url = config('services.wp_api.url').'/wp-json/wp/v2/posts?slug='.$type;
+        $cacheKey = md5($url);
+
+        return Cache::remember($cacheKey, 86400, function () use ($url, $type) {
+            try {
+                $response = $this->client->request('GET', $url, $this->params);
+                $body = $response->getBody()->getContents();
+
+                $data = [
+                   'body' => json_decode($body, true),
+                   'headers' => $response->getHeaders()
+                ];
+
+                return $this->reformatContent($type = 'post_archive', $data);
+            } catch (\Exception $e) {
+                abort(500, $e->getMessage());
+            }
+        });
+    }
+
+    public function getAuthor(string $url, $id = null)
+    {
+        if (!$url) {
+            $url = config('services.wp_api.url').'/wp-json/wp/v2/users/'.$id;
+        }
+        $cacheKey = md5($url);
+
+        return Cache::remember($cacheKey, 86400, function () use ($url) {
+            try {
+                $response = $this->client->request('GET', $url, $this->params);
+                $body = $response->getBody()->getContents();
+
+                $data = json_decode($body, true);
+
+                return $data;
+                // return $this->reformatContent('author', $data);
+            } catch (\Exception $e) {
+                abort(500, $e->getMessage());
+            }
+        });
     }
 }
