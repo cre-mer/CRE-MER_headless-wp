@@ -71,7 +71,6 @@
         </div>
 
         <div class="links">
-            <a href="/beispiel-seite">Beispiel Seite</a>
             <a href="/posts">Post Archive</a>
             <a href="https://laravel.com/docs">Docs</a>
             <a href="https://laracasts.com">Laracasts</a>
