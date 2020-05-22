@@ -6,8 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ env('APP_NAME') }} - @yield('title', env('APP_NAME'))</title>
-        <meta name="og:title" content="{{ $post->seo_title ?? '' }}">
-        <meta name="description" content="{{ $post->meta_description ?? '' }}">
+        {!! $post->yoast_head ?? '' !!}
 
         {{-- Scripts --}}
         @stack('styles')

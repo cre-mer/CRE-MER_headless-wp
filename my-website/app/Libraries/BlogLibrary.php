@@ -47,6 +47,7 @@ class BlogLibrary
             $blog->seo_title = $rawBlog['title']['rendered'];
         }
 
+        $blog->yoast_head = $rawBlog['yoast_head'];
         $blog->meta_description = $rawBlog['meta']['_yoast_wpseo_metadesc'][0] ?? null;
         $blog->author = $rawBlog['_links']['author'][0];
 

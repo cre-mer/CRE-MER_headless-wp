@@ -19,10 +19,20 @@ class RequestLibrary
         ];
     }
 
+    /**
+     * Generate unique cache key with md5 for
+     * wp api data based on the request's url
+     * @param  string $url url to cache
+     * @return string      unique encrypted key
+     */
+    public function generateCacheKey($url) {
+        return md5($url);
+    }
+
     public function getData($url, $type = null)
     {
         $url = config('services.wp_api.url').'/wp-json/wp/v2/'.$type.'?slug='.$url;
-        $cacheKey = md5($url);
+        $cacheKey = $this->generateCacheKey($url);
 
         return Cache::remember($cacheKey, 86400, function () use ($url, $type) {
             try {
@@ -87,7 +97,7 @@ class RequestLibrary
     public function getPosts($type)
     {
         $url = config('services.wp_api.url').'/wp-json/wp/v2/posts?slug='.$type;
-        $cacheKey = md5($url);
+        $cacheKey = $this->generateCacheKey($url);
 
         return Cache::remember($cacheKey, 86400, function () use ($url, $type) {
             try {
@@ -111,7 +121,7 @@ class RequestLibrary
         if (!$url) {
             $url = config('services.wp_api.url').'/wp-json/wp/v2/users/'.$id;
         }
-        $cacheKey = md5($url);
+        $cacheKey = $this->generateCacheKey($url);
 
         return Cache::remember($cacheKey, 86400, function () use ($url) {
             try {
