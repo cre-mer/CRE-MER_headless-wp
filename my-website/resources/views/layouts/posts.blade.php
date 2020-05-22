@@ -11,14 +11,15 @@
 
     <ul>
 
-        @foreach ($posts as $post)
+        {{-- Use $p instead of $post to avoid overwriting $post variable in layouts/app.blade.php --}}
+        @foreach ($posts as $p)
             <li>
                 <article>
                     <h2>
-                        <a href="{{ $post->slug ?? '' }}">{{ $post->title ?? '' }}</a>
+                        <a href="{{ $p->slug ?? '' }}">{{ $p->title ?? '' }}</a>
                     </h2>
 
-                    <address>@lang('posts.author_name', ['name' => $post->author['name']])</address>
+                    <address>@lang('posts.author_name', ['name' => $p->author['name']])</address>
                 </article>
 
             </li>
