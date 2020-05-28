@@ -54,7 +54,7 @@ class RequestLibrary
     public function reformatContent($type, $data)
     {
         if ($type == 'posts') {
-            return (new BlogLibrary)->reformatBlogList($data);
+            return (new PostLibrary)->reformatBlogList($data);
         } elseif ($type == 'pages') {
             return (new PageLibrary)->reformatPage($data);
         } elseif ($type == 'post_archive') {

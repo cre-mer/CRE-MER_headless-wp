@@ -13,10 +13,9 @@ class UtilLibrary
     public function reformatContent($content)
     {
         $url = config('services.wp_api.short_url');
-        $search = [
-            'https://' . $url,
-            'http://' . $url
-        ];
-        return str_replace($search, '', $content);
+        // regex http || https
+        $search = "(https?://$url)";
+
+        return preg_replace($search, '', $content);
     }
 }

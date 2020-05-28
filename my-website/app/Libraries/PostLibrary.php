@@ -3,7 +3,7 @@
 use Jenssegers\Date\Date;
 use stdClass;
 
-class BlogLibrary
+class PostLibrary
 {
     /**
     * Reformat the content of an array of blog posts
