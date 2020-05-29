@@ -16,7 +16,7 @@
             <li>
                 <article>
                     <h2>
-                        <a href="{{ $p->slug ?? '' }}">{{ $p->title ?? '' }}</a>
+                        <a href="{{ $p->slug ?? '' }}">{!! $p->title ?? '' !!}</a>
                     </h2>
 
                     <address>@lang('posts.author_name', ['name' => $p->author['name']])</address>
