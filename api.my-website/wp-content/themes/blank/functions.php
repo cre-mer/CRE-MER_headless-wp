@@ -13,11 +13,12 @@ class ThemeSetup
     }
 
     /**
-     * Allow anonymous comments
+     * Handle REST API
      * @return void
      */
     public function restApi()
     {
+        // Allow anonymous comments
         add_filter('rest_allow_anonymous_comments', '__return_true');
     }
 
@@ -27,11 +28,12 @@ class ThemeSetup
     */
     public function themeSupport()
     {
+        // Enable post thumbnails
         add_theme_support('post-thumbnails');
     }
 
     /**
-     * Show YOAST in Rest
+     * Handle YOAST in REST API
      * @return void
      */
     public function yoastMeta()
