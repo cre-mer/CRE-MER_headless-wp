@@ -20,6 +20,20 @@ class ThemeSetup
     {
         // Allow anonymous comments
         add_filter('rest_allow_anonymous_comments', '__return_true');
+
+        // Restrict api Access
+        add_filter( 'rest_authentication_errors', 'filter_incoming_connections' );
+
+        function filter_incoming_connections( $errors ) {
+            $client_id = filter_var($_GET['client_id'], FILTER_SANITIZE_STRING);
+            $client_secret = filter_var($_GET['client_secret'], FILTER_SANITIZE_STRING);
+
+            if( $client_id !== WP_API_CLIENT_ID && $client_secret !== WP_API_CLIENT_SECRET)
+                return new WP_Error( 'forbidden_access', 'Access denied', array( 'status' => 403 ) );
+
+            return $errors;
+
+        }
     }
 
     /**

@@ -46,7 +46,7 @@ class UploadsController extends Controller
      */
     public function setFileGetContentsArgs()
     {
-        return env('APP_ENV') == 'production' ? null :
+        return config('services.app.env') == 'production' ? null :
             [
                 "ssl"=> [
                     "verify_peer"      => false,

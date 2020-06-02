@@ -51,8 +51,7 @@ class PostArchiveLibrary
         $blog->meta_description = $rawBlog['meta']['_yoast_wpseo_metadesc'][0] ?? null;
 
         $requestLibrary = new RequestLibrary();
-        $blog->author = $requestLibrary->getAuthor($rawBlog['_links']['author'][0]['href']);
-
+        $blog->author = $requestLibrary->getAuthor($rawBlog['_links']['author'][0]['href'].$requestLibrary->client_auth);
 
         // $blog->featured_media =  (new ImageLibrary)->reformatFeaturedImage($rawBlog['_links']['wp:featuredmedia'][0]);
 

@@ -36,5 +36,8 @@ return [
         'client_id' => env('WP_API_CLIENT_ID'),
         'client_secret' => env('WP_API_CLIENT_SECRET'),
     ],
+    'app' => [
+        'env' => env('APP_ENV')
+    ]
 
 ];

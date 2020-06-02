@@ -15,8 +15,13 @@ class RequestLibrary
                 'Authorization' => 'Bearer '.$this->token,
                 'Accept' => 'application/json'
             ],
-            'verify' => env('APP_ENV') == 'production' ? true : false // set to true to check for ssl
+            'verify' => config('services.app.env') == 'production' ? true : false // set to true to check for ssl
         ];
+
+        // set api auth variables
+        $client_id = config('services.wp_api.client_id');
+        $client_secret = config('services.wp_api.client_secret');
+        $this->client_auth = '?client_id='.$client_id.'&client_secret='.$client_secret;
     }
 
     /**
@@ -31,7 +36,7 @@ class RequestLibrary
 
     public function getData($url, $type = null)
     {
-        $url = config('services.wp_api.url').'/wp-json/wp/v2/'.$type.'?slug='.$url;
+        $url = config('services.wp_api.url').'/wp-json/wp/v2/'.$type.$this->client_auth.'&slug='.$url;
         $cacheKey = $this->generateCacheKey($url);
 
         return Cache::remember($cacheKey, 86400, function () use ($url, $type) {
@@ -96,7 +101,7 @@ class RequestLibrary
      */
     public function getPosts($type)
     {
-        $url = config('services.wp_api.url').'/wp-json/wp/v2/posts?slug='.$type;
+        $url = config('services.wp_api.url').'/wp-json/wp/v2/posts'.$this->client_auth.'&slug='.$type;
         $cacheKey = $this->generateCacheKey($url);
 
         return Cache::remember($cacheKey, 86400, function () use ($url, $type) {
@@ -119,7 +124,7 @@ class RequestLibrary
     public function getAuthor(string $url, $id = null)
     {
         if (!$url) {
-            $url = config('services.wp_api.url').'/wp-json/wp/v2/users/'.$id;
+            $url = config('services.wp_api.url').'/wp-json/wp/v2/users/'.$id.$this->client_auth;
         }
         $cacheKey = $this->generateCacheKey($url);
 
